@@ -86,6 +86,9 @@ const Navbar = () => {
                 </details>
               </li>
               <li>
+                <Link href="/">Careers</Link>
+              </li>
+              <li>
                 <Link href="/contact-us">Contact Us</Link>
               </li>
             </ul>
@@ -135,6 +138,19 @@ const Navbar = () => {
             </li>
             <li>
               <details>
+                <summary className="hover:text-pink-500">Community</summary>
+                <ul className="p-2 bg-white rounded-md shadow text-gray-800">
+                  <li>
+                    <Link href="/photo-gallery">Photo Gallery</Link>
+                  </li>
+                  <li>
+                    <Link href="/news-events">News & Events</Link>
+                  </li>
+                </ul>
+              </details>
+            </li>
+            <li>
+              <details>
                 <summary className="hover:text-pink-500">
                   Research & Innovation
                 </summary>
@@ -147,6 +163,9 @@ const Navbar = () => {
                   </li>
                 </ul>
               </details>
+            </li>
+            <li>
+              <Link href="/">Careers</Link>
             </li>
             <li>
               <Link href="/contact-us" className="hover:text-pink-500">

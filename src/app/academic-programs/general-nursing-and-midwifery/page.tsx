@@ -303,7 +303,7 @@ export default function GNMProgram() {
                   "Professional Trends & Ethics",
                   "Leadership & Management",
                 ],
-              }
+              },
             ].map((block, i) => (
               <div
                 key={i}
@@ -329,69 +329,72 @@ export default function GNMProgram() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
-      <div className="min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-6 space-y-32">
-          {/* Career Opportunities */}
-          <section>
-            <h2 className="text-3xl font-bold text-center text-indigo-800 mb-12">
-              Career Opportunities
-            </h2>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  icon: <Hospital className="w-10 h-10 text-white" />,
-                  title: "Staff Nurse",
-                },
-                {
-                  icon: <Users className="w-10 h-10 text-white" />,
-                  title: "Community Health Nurse",
-                },
-                {
-                  icon: <Heart className="w-10 h-10 text-white" />,
-                  title: "Midwife",
-                },
-                {
-                  icon: <Briefcase className="w-10 h-10 text-white" />,
-                  title: "Healthcare Educator/Admin",
-                },
-              ].map((career, i) => (
-                <div
-                  key={i}
-                  className="bg-gradient-to-r from-indigo-600 to-pink-600 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition"
-                >
-                  <div className="mb-4 flex justify-center">{career.icon}</div>
-                  <h3 className="text-lg font-semibold text-white">
+      <section className="py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Career<span className="text-pink-600"> Opportunity</span>
+          </h2>
+          <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+            Explore our diverse range of nursing programs designed to build
+            knowledge, skills, and leadership in healthcare.
+          </p>
+
+          <div className="relative flex justify-center items-center gap-16 flex-wrap md:flex-nowrap">
+            {[
+              {
+                icon: <Hospital className="w-12 h-12 text-pink-500" />,
+                title: "Staff Nurse",
+              },
+              {
+                icon: <Users className="w-12 h-12 text-indigo-500" />,
+                title: "Community Health Nurse",
+              },
+              {
+                icon: <Heart className="w-12 h-12 text-pink-400" />,
+                title: "Midwife",
+              },
+              {
+                icon: <Briefcase className="w-12 h-12 text-indigo-400" />,
+                title: "Healthcare Educator/Admin",
+              },
+            ].map((career, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center group cursor-pointer"
+              >
+                {/* Icon */}
+                <div className="mb-3">{career.icon}</div>
+
+                {/* Title + Hover underline */}
+                <div className="relative">
+                  <span className="text-lg font-semibold text-indigo-900 group-hover:text-pink-500 transition-colors">
                     {career.title}
-                  </h3>
+                  </span>
+                  <div className="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-pink-400 to-indigo-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></div>
                 </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Divider */}
-          <div className="border-t-4 border-indigo-200"></div>
-
-          {/* CTA Section */}
-          <section className="text-center">
-            <div className="bg-gradient-to-r from-indigo-50 to-pink-50 rounded-3xl shadow-xl p-12 max-w-3xl mx-auto border border-indigo-100">
-              <h2 className="text-3xl font-bold mb-4 text-indigo-800">
-                Ready to Begin Your Nursing Journey?
-              </h2>
-              <p className="text-gray-700 mb-6">
-                Apply today to join our GNM program and take the first step
-                towards a rewarding healthcare career.
-              </p>
-              <button className="bg-gradient-to-r from-indigo-600 to-pink-600 text-white px-8 py-3 rounded-2xl shadow-lg hover:scale-105 transition">
-                Apply Now
-              </button>
-            </div>
-          </section>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-center">
+        <h2 className="text-4xl font-extrabold mb-6">
+          Ready to Begin Your Nursing Journey?
+        </h2>
+        <p className="text-lg mb-8 max-w-2xl mx-auto">
+          Apply today to join our GNM program and take the first step towards a
+          rewarding healthcare career.
+        </p>
+        <button className="px-8 py-4 bg-white text-pink-500 font-bold rounded-full shadow-lg hover:scale-105 hover:bg-gray-100 transition">
+          Apply Now
+        </button>
+      </section>
+
+      {/* Career Opportunities - Flowing Ribbon Style */}
     </>
   );
 }
