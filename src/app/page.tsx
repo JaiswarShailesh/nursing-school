@@ -1,6 +1,5 @@
 import AboutUsSection from "./components/AboutUsSection";
 import AdmissionSection from "./components/AdmissionSection";
-import Carousel from "./components/Carousel";
 import ContactUsSection from "./components/ContactUsSection";
 import CoursesSection from "./components/CoursesSection";
 import HeroBanner from "./components/HeroBanner";
