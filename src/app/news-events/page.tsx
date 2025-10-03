@@ -1,5 +1,6 @@
 "use client";
 import { ArrowRight, CalendarDays } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 // Helper to generate slug
@@ -126,18 +127,18 @@ const NewsEvents = () => {
                     {item.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{item.description}</p>
-                  <a
-                    href='/'
+                  <Link
+                    href="/"
                     className="inline-flex items-center text-pink-600 font-medium hover:underline"
                   >
                     Read More <ArrowRight className="w-4 h-4 ml-1" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
-{/* px-6 py-3 rounded-full bg-pink-500 text-white font-medium shadow-lg hover:bg-pink-600 transition */}
+          {/* px-6 py-3 rounded-full bg-pink-500 text-white font-medium shadow-lg hover:bg-pink-600 transition */}
           {/* Pagination */}
           <div className="flex justify-center items-center mt-12 space-x-2">
             <button
