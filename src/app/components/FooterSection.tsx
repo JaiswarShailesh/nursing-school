@@ -123,7 +123,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-12 grid md:grid-cols-4 gap-12 relative z-10">
         {/* Brand / About */}
         <div>
-          <h3 className="text-2xl font-bold mb-4">Nursing College</h3>
+          {/* <h3 className="text-2xl font-bold mb-4"></h3> */}
+          <img src="images/nursing_logo.png" alt="logo" className="mb-5"/>
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
             Dedicated to nurturing the next generation of skilled and
             compassionate healthcare professionals through excellence in

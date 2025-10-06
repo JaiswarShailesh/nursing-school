@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50">
+    <section className="py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
           What Our <span className="text-pink-600">Alumni Say</span>

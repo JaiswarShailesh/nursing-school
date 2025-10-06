@@ -230,7 +230,7 @@ export default function FacultyPage() {
     <div className="min-h-screen bg-gray-50">
       {/* HERO */}
       <header className="relative bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-6 pb-20 pt-42 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
               Meet Our{" "}
@@ -487,7 +487,7 @@ export default function FacultyPage() {
         </section>
 
         {/* Accordion: Faculty by Department */}
-        <section className="mb-8">
+        {/* <section className="mb-8">
           <div className="bg-white rounded-2xl shadow p-6">
             <h3 className="text-xl font-semibold mb-4">
               Directory by Department
@@ -504,10 +504,10 @@ export default function FacultyPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Achievements Carousel */}
-        <section className="mb-8">
+        {/* <section className="mb-8">
           <div className="bg-white rounded-2xl shadow p-6">
             <h3 className="text-xl font-semibold mb-4">Faculty Achievements</h3>
 
@@ -534,7 +534,7 @@ export default function FacultyPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Testimonials */}
         <section className="mb-12">

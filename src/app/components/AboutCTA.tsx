@@ -6,7 +6,7 @@ const AboutCTA = () => {
   const router = useRouter();
 
   return (
-    <section className="relative py-24 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden text-center">
+    <section className="relative py-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden text-center">
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/20"></div>
       <div className="relative z-10">
         <h2 className="text-4xl font-extrabold mb-6">

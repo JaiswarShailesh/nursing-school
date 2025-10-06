@@ -1,5 +1,6 @@
 import React from "react";
 import { Star, BookOpen, Globe } from "lucide-react";
+import SectionHeading from "../components/sectionHeading";
 
 const CollegeHighlights = () => {
   return (
@@ -15,11 +16,12 @@ const CollegeHighlights = () => {
         </p>
       </div> */}
 
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-extrabold text-gray-800">
-          Our <span className="text-pink-600">Core Values</span>
-        </h2>
-        <div className="w-24 h-1 bg-pink-500 rounded-full mx-auto mt-4"></div>
+      <div className="text-center">
+        <SectionHeading
+          title="Our"
+          underlineTitle="Core Values"
+          description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+        />
         {/* <p className="text-gray-600 max-w-2xl mx-auto text-lg">
           At our Nursing College, we strive for excellence, encourage research,
           and provide global exposure to our students.

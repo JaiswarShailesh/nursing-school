@@ -1,13 +1,14 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import CoursesSection from "../components/CoursesSection";
+import SectionHeading from "../components/sectionHeading";
 
 const AdmissionPage = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white text-center">
-        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+        <div className="max-w-7xl mx-auto px-6 pb-20 pt-42 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow">
             <span className="underline decoration-yellow-300 decoration-4 pl-4">
               Admission
@@ -27,10 +28,11 @@ const AdmissionPage = () => {
       {/* Eligibility Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-4">
-            Eligibility Criteria
-          </h2>
-          <div className="w-24 h-1 bg-pink-500 rounded-full mx-auto"></div>
+          <SectionHeading
+            title="Eligibility"
+            underlineTitle="Criteria"
+            description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          />
         </div>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
@@ -54,10 +56,11 @@ const AdmissionPage = () => {
       {/* Admission Process */}
       <section className="py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-4">
-            Admission Process
-          </h2>
-          <div className="w-24 h-1 bg-pink-500 rounded-full mx-auto"></div>
+          <SectionHeading
+            title="Admission"
+            underlineTitle="Process"
+            description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          />
         </div>
 
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">

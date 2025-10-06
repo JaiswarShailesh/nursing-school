@@ -48,7 +48,7 @@ export default function Gallery() {
     <>
       {/* Header */}
       <header className="relative bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-20 text-center">
+        <div className="max-w-7xl mx-auto px-6 pb-20 pt-42 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold drop-shadow">
             Photo
             <span className="underline decoration-yellow-300 decoration-4 pl-3">
@@ -78,7 +78,7 @@ export default function Gallery() {
                 className="mb-6 relative group cursor-pointer overflow-hidden rounded-xl"
                 onClick={() => setSelectedIndex(i)}
               >
-                <Image
+                <img
                   src={photo.src}
                   alt={photo.caption}
                   className="rounded-xl shadow-md w-full object-cover transform group-hover:scale-110 transition duration-500"

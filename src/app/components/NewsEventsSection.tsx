@@ -7,7 +7,7 @@ const NewsEventsSection = () => {
       date: "Oct 15, 2025",
       desc: "Our institute is hosting a national-level conference bringing together healthcare professionals and researchers from across the country.",
       image:
-        "https://images.unsplash.com/photo-1581092334442-b1f53f7b9c7f?auto=format&fit=crop&w=800&q=80",
+        "/images/nursing_conference.png",
       link: "#",
     },
     {
@@ -15,7 +15,7 @@ const NewsEventsSection = () => {
       date: "Nov 5, 2025",
       desc: "A vibrant celebration of talent, creativity, and culture. Join us for music, dance, and exciting competitions.",
       image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+        "/images/annual_cultural_fest.png",
       link: "#",
     },
     {
@@ -23,13 +23,13 @@ const NewsEventsSection = () => {
       date: "Sep 28, 2025",
       desc: "Final year results have been declared. Congratulations to all our graduates for their hard work and achievements!",
       image:
-        "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80",
+        "/images/exam_results.png",
       link: "#",
     },
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">
           Latest <span className="text-pink-600">News & Events</span>

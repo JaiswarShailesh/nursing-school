@@ -2,7 +2,7 @@ import { FileDown, ArrowRight } from "lucide-react";
 
 const AdmissionSection = () => {
   return (
-    <section className="relative py-20 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden">
+    <section className="relative py-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581091215367-59ab6f8b18a6?auto=format&fit=crop&w=1600&q=80')] opacity-20 bg-cover bg-center"></div>
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/20"></div>

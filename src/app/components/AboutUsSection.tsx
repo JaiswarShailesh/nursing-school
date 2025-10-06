@@ -78,7 +78,7 @@
 
 const AboutUsSection = () => {
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
+    <section className="relative py-16 bg-white overflow-hidden">
       {/* Decorative Shape */}
       <div className="absolute top-0 left-0 w-40 h-40 bg-pink-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-60 h-60 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-pulse"></div>
