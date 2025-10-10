@@ -20,7 +20,7 @@ const CollegeHighlights = () => {
         <SectionHeading
           title="Our"
           underlineTitle="Core Values"
-          description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          description="Nurturing compassion, excellence, and integrity — the guiding principles behind every step of our journey in nursing education."
         />
         {/* <p className="text-gray-600 max-w-2xl mx-auto text-lg">
           At our Nursing College, we strive for excellence, encourage research,

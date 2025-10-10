@@ -2,6 +2,7 @@ import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import CoursesSection from "../components/CoursesSection";
 import SectionHeading from "../components/sectionHeading";
+import Eligibility from "../academic-programs/general-nursing-and-midwifery/ProgramHighlights";
 
 const AdmissionPage = () => {
   return (
@@ -25,41 +26,13 @@ const AdmissionPage = () => {
       {/* Programs Section */}
       <CoursesSection />
 
-      {/* Eligibility Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-          <SectionHeading
-            title="Eligibility"
-            underlineTitle="Criteria"
-            description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
-          />
-        </div>
-
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          {[
-            "Minimum 50% marks in Science (Physics, Chemistry, Biology) at 10+2 level.",
-            "Applicants must be medically fit.",
-            "Good communication skills and basic English proficiency.",
-            "Age limit: 17-35 years (as per regulatory guidelines).",
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="flex items-start bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition"
-            >
-              <CheckCircle2 className="w-6 h-6 text-pink-500 flex-shrink-0 mr-4 mt-1" />
-              <p className="text-gray-700">{item}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Admission Process */}
-      <section className="py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
           <SectionHeading
             title="Admission"
             underlineTitle="Process"
-            description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+            description="Step-by-step guidance to help aspiring nurses secure their place and thrive in our institution."
           />
         </div>
 
@@ -99,6 +72,36 @@ const AdmissionPage = () => {
           ))}
         </div>
       </section>
+
+      {/* Eligibility Section */}
+      {/* <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+          <SectionHeading
+            title="Eligibility"
+            underlineTitle="Criteria"
+            description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          />
+        </div>
+
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          {[
+            "Minimum education required: 10+2 with English",
+            "Must have obtained a minimum of 40% at the qualifying examination and English individually from any recognized board.",
+            "Candidates are also eligible from State Open School recognized by State Government and National Institute of Open School (NIOS) recognized by Central Government.",
+            "Science is preferable.",
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex items-start bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition"
+            >
+              <CheckCircle2 className="w-6 h-6 text-pink-500 flex-shrink-0 mr-4 mt-1" />
+              <p className="text-gray-700">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section> */}
+
+      <Eligibility />
 
       {/* Call to Action */}
       <section className="py-16 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white text-center">

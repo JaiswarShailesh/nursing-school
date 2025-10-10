@@ -1,16 +1,16 @@
+import SectionHeading from "@/app/components/sectionHeading";
 import { CheckCircle } from "lucide-react";
 import React from "react";
 const CourseOverview = () => {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          Curriculum<span className="text-pink-600"> Overview</span>
-        </h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-          Explore our diverse range of nursing programs designed to build
-          knowledge, skills, and leadership in healthcare.
-        </p>
+        <SectionHeading
+          title="Curriculum"
+          underlineTitle="Overview"
+          description="Comprehensive programs that blend theory, hands-on training, and
+          research opportunities for holistic learning."
+        />
 
         <div className="grid md:grid-cols-3 gap-10">
           {[

@@ -34,8 +34,8 @@ const AboutCourse = () => {
             className="rounded-2xl shadow-xl transform hover:scale-105 transition"
           />
           <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-md">
-            <h4 className="text-lg font-semibold text-gray-800">100%</h4>
-            <p className="text-sm text-gray-500">Placement Support</p>
+            <h4 className="text-lg font-semibold text-gray-800">GNM</h4>
+            <p className="text-sm text-gray-500">General Nursing & Midwifery</p>
           </div>
         </div>
       </div>

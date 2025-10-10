@@ -31,7 +31,7 @@ const FeeStructure = () => {
         <SectionHeading
           title="Fees"
           underlineTitle="Structure"
-          description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          description="Transparent and structured fee details to help you plan your nursing education with confidence."
         />
 
         <div className="overflow-x-auto">

@@ -104,6 +104,7 @@
 // export default Footer;
 
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -124,7 +125,7 @@ const Footer = () => {
         {/* Brand / About */}
         <div>
           {/* <h3 className="text-2xl font-bold mb-4"></h3> */}
-          <img src="images/nursing_logo.png" alt="logo" className="mb-5"/>
+          <img src="/images/nursing_logo.png" alt="logo" className="mb-5" />
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
             Dedicated to nurturing the next generation of skilled and
             compassionate healthcare professionals through excellence in
@@ -162,41 +163,78 @@ const Footer = () => {
         <div>
           <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-gray-700">
-            {["Home", "About Us", "Courses", "Admissions", "Contact Us"].map(
+            <li>
+              <Link href="/" className="hover:text-pink-600 transition">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/about-us" className="hover:text-pink-600 transition">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/faculty" className="hover:text-pink-600 transition">
+                Faculty
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/admission"
+                className="hover:text-pink-600 transition"
+              >
+                Admissions
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/academic-programs/general-nursing-and-midwifery"
+                className="hover:text-pink-600 transition"
+              >
+                GNM
+              </Link>
+            </li>
+            {/* {["Home", "", "Courses", "", "Contact Us"].map(
               (item) => (
                 <li key={item}>
-                  <a href="#" className="hover:text-pink-600 transition">
+                  <Link href="#" className="hover:text-pink-600 transition">
                     {item}
-                  </a>
+                  </Link>
                 </li>
               )
-            )}
+            )} */}
           </ul>
         </div>
 
         {/* Resources */}
         <div>
-          <h4 className="text-xl font-semibold mb-4">Resources</h4>
+          <h4 className="text-xl font-semibold mb-4">Others</h4>
           <ul className="space-y-2 text-gray-700">
             <li>
-              <a href="#" className="hover:text-pink-600 transition">
-                Research & Innovation
-              </a>
+              <Link href="/newsevents" className="hover:text-pink-600 transition">
+                News & Events
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-pink-600 transition">
-                Faculty
-              </a>
+              <Link href="/" className="hover:text-pink-600 transition">
+                Careers
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-pink-600 transition">
-                Student Life
-              </a>
+              <Link
+                href="/contact-us"
+                className="hover:text-pink-600 transition"
+              >
+                Contact Us
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-pink-600 transition">
-                Alumni
-              </a>
+              <Link
+                href="/testimonials"
+                className="hover:text-pink-600 transition"
+              >
+                Testimonials
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,3 +1,4 @@
+import SectionHeading from "@/app/components/sectionHeading";
 import { Briefcase, Heart, Hospital, Users } from "lucide-react";
 import React from "react";
 
@@ -5,13 +6,11 @@ const CareerOpportunity = () => {
   return (
     <section className="py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          Career<span className="text-pink-600"> Opportunity</span>
-        </h2>
-        <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-          Explore our diverse range of nursing programs designed to build
-          knowledge, skills, and leadership in healthcare.
-        </p>
+        <SectionHeading
+          title="Career"
+          underlineTitle="Opportunity"
+          description="Opening doors to rewarding careers in hospitals, clinics, research, and community healthcare."
+        />
 
         <div className="relative flex justify-center items-center gap-16 flex-wrap md:flex-nowrap">
           {[

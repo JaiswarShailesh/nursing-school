@@ -120,7 +120,7 @@ const ContactUsSection = () => {
             <MapPin className="w-10 h-10 text-pink-500 mx-auto mb-4" />
             <h4 className="text-lg font-semibold text-gray-800">Address</h4>
             <p className="text-gray-600">
-              Nursing College Campus, <br /> Mumbai, India
+              Kharde BK, Shirpur 425405 <br /> Dhule, Maharashtra
             </p>
           </div>
         </div>

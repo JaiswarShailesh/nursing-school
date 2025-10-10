@@ -1,24 +1,26 @@
 import { GraduationCap, BookOpen, Stethoscope } from "lucide-react";
+import Link from "next/link";
 
 const CoursesSection = () => {
   const courses = [
+    // {
+    //   icon: <Stethoscope className="w-10 h-10 text-pink-500" />,
+    //   title: "B.Sc Nursing",
+    //   desc: "A comprehensive 4-year program blending theoretical knowledge with extensive clinical practice to prepare skilled nursing professionals.",
+    //   link: "#",
+    // },
+    // {
+    //   icon: <BookOpen className="w-10 h-10 text-blue-500" />,
+    //   title: "M.Sc Nursing",
+    //   desc: "Advanced program focusing on specialized nursing fields, research, and leadership to shape the next generation of healthcare experts.",
+    //   link: "#",
+    // },
     {
+      // icon: <GraduationCap className="w-10 h-10 text-green-500" />,
       icon: <Stethoscope className="w-10 h-10 text-pink-500" />,
-      title: "B.Sc Nursing",
-      desc: "A comprehensive 4-year program blending theoretical knowledge with extensive clinical practice to prepare skilled nursing professionals.",
-      link: "#",
-    },
-    {
-      icon: <BookOpen className="w-10 h-10 text-blue-500" />,
-      title: "M.Sc Nursing",
-      desc: "Advanced program focusing on specialized nursing fields, research, and leadership to shape the next generation of healthcare experts.",
-      link: "#",
-    },
-    {
-      icon: <GraduationCap className="w-10 h-10 text-green-500" />,
       title: "GNM (General Nursing & Midwifery)",
       desc: "A diploma course designed for students who wish to start their nursing career with solid clinical and midwifery training.",
-      link: "#",
+      link: "/academic-programs/general-nursing-and-midwifery",
     },
   ];
 
@@ -33,11 +35,11 @@ const CoursesSection = () => {
           knowledge, skills, and leadership in healthcare.
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex justify-center">
           {courses.map((course, i) => (
             <div
               key={i}
-              className="group bg-white rounded-2xl shadow-lg p-8 transition transform hover:-translate-y-2 hover:shadow-2xl"
+              className="group bg-white rounded-2xl shadow-lg p-8 transition transform hover:-translate-y-2 hover:shadow-2xl max-w-md"
             >
               <div className="flex justify-center mb-6">
                 <div className="p-4 bg-gradient-to-tr from-pink-100 to-purple-100 rounded-full">
@@ -48,12 +50,12 @@ const CoursesSection = () => {
                 {course.title}
               </h3>
               <p className="text-gray-600 mb-6">{course.desc}</p>
-              <a
+              <Link
                 href={course.link}
                 className="inline-block px-5 py-2 rounded-full bg-pink-500 text-white font-medium hover:bg-pink-600 transition"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           ))}
         </div>

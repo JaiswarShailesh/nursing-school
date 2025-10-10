@@ -38,7 +38,7 @@ const VisionMission = () => {
           Our <span className="text-pink-600">Vision & Mission</span>
         </h2>
         <div className="w-24 h-1 bg-pink-500 rounded-full mx-auto"></div> */}
-        <SectionHeading title="Our" underlineTitle="Vision & Mission" description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."/>
+        <SectionHeading title="Our" underlineTitle="Vision & Mission" description="Guided by purpose, driven by compassion — shaping the future of nursing through excellence and service."/>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">

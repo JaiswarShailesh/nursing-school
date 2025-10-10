@@ -2,6 +2,7 @@
 import { ArrowRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import newsEventsData from "../data/newsEvents";
 
 // Helper to generate slug
 const slugify = (text: string) =>
@@ -14,69 +15,10 @@ const NewsEvents = () => {
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const newsEvents = [
-    {
-      id: 1,
-      title: "Orientation Program for New Batch",
-      date: "15 September 2025",
-      description:
-        "Our new batch of GNM students were welcomed with an engaging orientation program highlighting values, discipline, and future goals.",
-      image: "https://source.unsplash.com/600x400/?students,classroom",
-    },
-    {
-      id: 2,
-      title: "Health Awareness Camp",
-      date: "5 September 2025",
-      description:
-        "A free health awareness camp was organized for the local community. Students actively participated in spreading awareness.",
-      image: "https://source.unsplash.com/600x400/?health,community",
-    },
-    {
-      id: 3,
-      title: "Nursing Day Celebration",
-      date: "12 May 2025",
-      description:
-        "On International Nurses Day, our students honored the contribution of nurses with skits, posters, and awareness programs.",
-      image: "https://source.unsplash.com/600x400/?nurse,hospital",
-    },
-    {
-      id: 4,
-      title: "Annual Sports Meet",
-      date: "22 February 2025",
-      description:
-        "Students showcased their sportsmanship and team spirit during the annual sports meet held at the college ground.",
-      image: "https://source.unsplash.com/600x400/?sports,students",
-    },
-    {
-      id: 5,
-      title: "Seminar on Modern Healthcare",
-      date: "10 January 2025",
-      description:
-        "A seminar on advancements in modern healthcare was conducted by leading professionals, giving valuable insights to students.",
-      image: "https://source.unsplash.com/600x400/?conference,health",
-    },
-    {
-      id: 6,
-      title: "Community Service Drive",
-      date: "28 December 2024",
-      description:
-        "Our students took part in a community service drive, supporting rural health initiatives and providing basic check-ups.",
-      image: "https://source.unsplash.com/600x400/?community,volunteer",
-    },
-    {
-      id: 7,
-      title: "Guest Lecture on Mental Health",
-      date: "15 November 2024",
-      description:
-        "A guest lecture was held by mental health professionals to educate students about psychological well-being.",
-      image: "https://source.unsplash.com/600x400/?mentalhealth,lecture",
-    },
-  ];
-
   // Pagination logic
-  const totalPages = Math.ceil(newsEvents.length / itemsPerPage);
+  const totalPages = Math.ceil(newsEventsData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = newsEvents.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = newsEventsData.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <>
@@ -114,7 +56,7 @@ const NewsEvents = () => {
               >
                 <div className="relative">
                   <img
-                    src={item.image}
+                    src={item.featuredImage}
                     alt={item.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition"
                   />
@@ -128,7 +70,7 @@ const NewsEvents = () => {
                   </h3>
                   <p className="text-gray-600 mb-4">{item.description}</p>
                   <Link
-                    href="/"
+                    href={`/news-events/${slugify(item.title)}`}
                     className="inline-flex items-center text-pink-600 font-medium hover:underline"
                   >
                     Read More <ArrowRight className="w-4 h-4 ml-1" />

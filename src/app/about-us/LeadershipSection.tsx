@@ -23,7 +23,7 @@ const LeadershipSection = () => {
         <SectionHeading
           title="Our"
           underlineTitle="Leadership"
-          description="Explore our diverse range of nursing programs designed to build knowledge, skills, and leadership in healthcare."
+          description="Meet the visionaries steering our institution toward growth, excellence, and compassionate care"
         />
       </div>
 

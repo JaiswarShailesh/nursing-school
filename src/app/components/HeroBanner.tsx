@@ -53,8 +53,7 @@ const HeroBanner = () => {
             Nursing & Medical College of Excellence
           </h1>
           <p className="mb-8 text-lg md:text-xl font-light drop-shadow-md">
-            Empowering Future Healthcare Leaders with Knowledge, Skill &
-            Compassion
+            In pursuit of excellence in nursing education with global standards
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a

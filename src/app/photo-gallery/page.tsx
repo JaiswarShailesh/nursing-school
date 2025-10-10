@@ -9,13 +9,13 @@ interface Photo {
 }
 
 const photos: Photo[] = [
-  { src: "/images/profile_1.png", caption: "Campus Building" },
-  { src: "/images/profile_2.png", caption: "Nursing Lab" },
-  { src: "/images/profile_3.png", caption: "Annual Event" },
-  { src: "/images/profile_4.png", caption: "Hospital Training" },
-  { src: "/images/profile_1.png", caption: "Cultural Fest" },
-  { src: "/images/profile_2.png", caption: "Convocation Ceremony" },
-  { src: "/images/profile_3.png", caption: "Community Outreach" },
+  { src: "/images/event_1.png", caption: "Campus Building" },
+  { src: "/images/event_2.png", caption: "Nursing Lab" },
+  { src: "/images/event_3.png", caption: "Annual Event" },
+  { src: "/images/event_4.png", caption: "Hospital Training" },
+  { src: "/images/event_5.png", caption: "Cultural Fest" },
+  { src: "/images/event_6.png", caption: "Convocation Ceremony" },
+  { src: "/images/event_7.png", caption: "Community Outreach" },
 ];
 
 export default function Gallery() {
@@ -66,10 +66,6 @@ export default function Gallery() {
       {/* Gallery Section */}
       <section className="py-16 bg-gradient-to-b from-indigo-50 to-pink-50 min-h-screen">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-extrabold text-center text-indigo-900 mb-12">
-            Photo Gallery
-          </h2>
-
           {/* Masonry Grid */}
           <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
             {photos.map((photo, i) => (

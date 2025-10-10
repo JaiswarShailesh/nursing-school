@@ -63,11 +63,11 @@ type Faculty = {
 const MOCK_FACULTY: Faculty[] = [
   {
     id: 1,
-    name: "Dr. Jane Doe",
-    role: "Professor & Principal",
+    name: "Mrs. Shubhashini K Rajan",
+    role: "Principal",
     dept: "Nursing",
     bio: "25+ years experience in nursing education, clinical research & leadership. Passionate about mentorship and evidence-based practice.",
-    img: "/images/principal.jpg",
+    img: "/images/user_1.png",
     interests: ["Clinical Nursing", "Education", "Research"],
     email: "jane.doe@nursingcollege.edu.in",
     linkedin: "#",
@@ -80,7 +80,7 @@ const MOCK_FACULTY: Faculty[] = [
     role: "Associate Professor",
     dept: "Community Health",
     bio: "Focus on community nursing, public health programs and outreach. Leads multiple community clinics and training programs.",
-    img: "/images/f2.jpg",
+    img: "/images/user_1.png",
     interests: ["Public Health", "Community Programs"],
     email: "john.smith@nursingcollege.edu.in",
     linkedin: "#",
@@ -92,7 +92,7 @@ const MOCK_FACULTY: Faculty[] = [
     role: "Senior Lecturer",
     dept: "Pediatrics",
     bio: "Specialized in pediatric nursing and neonatal care with extensive clinical experience.",
-    img: "/images/f3.jpg",
+    img: "/images/user_2.png",
     interests: ["Neonatal Care", "Pediatrics"],
     email: "alice.brown@nursingcollege.edu.in",
     linkedin: "#",
@@ -103,7 +103,7 @@ const MOCK_FACULTY: Faculty[] = [
     role: "Head of Research",
     dept: "Nursing Research",
     bio: "Leads research projects, grant-writing, and publishes regularly in international journals.",
-    img: "/images/f4.jpg",
+    img: "/images/user_3.png",
     interests: ["Research", "Epidemiology"],
     email: "robert.lee@nursingcollege.edu.in",
     linkedin: "#",
@@ -284,7 +284,7 @@ export default function FacultyPage() {
                 <input
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search faculty by name, role or department..."
+                  placeholder="Search faculty by name"
                   className="w-full input input-bordered rounded-full pl-12 pr-4 py-3"
                 />
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -292,7 +292,7 @@ export default function FacultyPage() {
                 </div>
               </div>
 
-              <div className="hidden md:flex gap-3">
+              {/* <div className="hidden md:flex gap-3">
                 {DEPARTMENTS.map((d) => (
                   <button
                     key={d}
@@ -306,7 +306,7 @@ export default function FacultyPage() {
                     {d}
                   </button>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             <div className="flex items-center gap-3">
@@ -356,7 +356,7 @@ export default function FacultyPage() {
 
         {/* Spotlight + Highlights */}
         <section className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="md:col-span-2 bg-white rounded-2xl shadow p-6">
+          {/* <div className="md:col-span-2 bg-white rounded-2xl shadow p-6">
             <h3 className="text-xl font-semibold mb-3">Featured Faculty</h3>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -384,10 +384,10 @@ export default function FacultyPage() {
                   </div>
                 ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Spotlight */}
-          <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
+          {/* <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center text-center">
             <h4 className="text-lg font-semibold mb-3">Faculty Spotlight</h4>
             {spotlight && (
               <>
@@ -409,7 +409,7 @@ export default function FacultyPage() {
                 </button>
               </>
             )}
-          </div>
+          </div> */}
         </section>
 
         {/* Faculty Grid / List */}
@@ -428,9 +428,9 @@ export default function FacultyPage() {
                       alt={f.name}
                       className="w-full h-44 object-cover rounded-xl mb-4"
                     />
-                    <div className="absolute top-3 left-3 bg-white/80 px-3 py-1 rounded-full text-sm font-medium">
+                    {/* <div className="absolute top-3 left-3 bg-white/80 px-3 py-1 rounded-full text-sm font-medium">
                       {f.dept}
-                    </div>
+                    </div> */}
                   </div>
                   <h3 className="text-lg font-semibold">{f.name}</h3>
                   <p className="text-sm text-gray-600">{f.role}</p>

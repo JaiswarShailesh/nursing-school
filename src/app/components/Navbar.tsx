@@ -9,6 +9,8 @@ import {
   Menu,
   X,
   ChevronDown,
+  PhoneCall,
+  Mail,
 } from "lucide-react";
 
 const LINKS = [
@@ -109,9 +111,15 @@ export default function Navbar() {
       {/* Topbar (hidden on small screens) */}
       <div className="hidden md:flex justify-between items-center px-4 md:px-8 py-2 bg-pink-600 text-white text-sm">
         <div className="flex items-center gap-4">
-          <span className="font-medium">📞 +91 12345 67890</span>
-          <span className="opacity-90">|</span>
-          <span>✉️ info@nursingcollege.edu</span>
+          {/* <span className="font-medium"><PhoneCall /> +91 12345 67890</span> */}
+          <div className="font-medium flex items-center">
+            <PhoneCall className="w-4 mr-2" />
+            <span>+91 12345 67890</span>
+          </div>
+          <div className="font-medium flex items-center">
+            <Mail className="w-4 mr-2" />
+            <span>info@nursingcollege.edu</span>
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
@@ -156,7 +164,7 @@ export default function Navbar() {
 
             {/* Programs dropdown (desktop) */}
             <li className="relative group">
-              <details className="group">
+              <details className="group" onClick={(e) => e.stopPropagation()}>
                 <summary className="cursor-pointer flex items-center gap-1 text-gray-800 hover:text-pink-500 transition-colors relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300 list-none">
                   Academic Programs
                   {mounted && (
@@ -167,7 +175,14 @@ export default function Navbar() {
                   )}
                 </summary>
 
-                <ul className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50">
+                <ul
+                  className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50"
+                  onClick={(e) => {
+                    // Close dropdown when link is clicked
+                    const details = e.currentTarget.closest("details");
+                    if (details) details.removeAttribute("open");
+                  }}
+                >
                   <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
                     <Link href="/academic-programs/general-nursing-and-midwifery">
                       General Nursing & Midwifery
@@ -191,10 +206,24 @@ export default function Navbar() {
                 </summary>
 
                 <ul className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50">
-                  <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
+                  <li
+                    className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition"
+                    onClick={(e) => {
+                      // Close dropdown when link is clicked
+                      const details = e.currentTarget.closest("details");
+                      if (details) details.removeAttribute("open");
+                    }}
+                  >
                     <Link href="/photo-gallery">Photo Gallery</Link>
                   </li>
-                  <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
+                  <li
+                    className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition"
+                    onClick={(e) => {
+                      // Close dropdown when link is clicked
+                      const details = e.currentTarget.closest("details");
+                      if (details) details.removeAttribute("open");
+                    }}
+                  >
                     <Link href="/news-events">News & Events</Link>
                   </li>
                 </ul>
@@ -203,7 +232,7 @@ export default function Navbar() {
 
             <li>
               <Link
-                href="/careers"
+                href="/"
                 className="relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300"
               >
                 Careers
