@@ -134,16 +134,26 @@ const ContactUsSection = () => {
               className="input input-bordered w-full rounded-full"
             />
             <input
-              type="email"
-              placeholder="Your Email"
+              type="tel"
+              placeholder="Your Phone Number"
               className="input input-bordered w-full rounded-full"
             />
           </div>
+
+          {/* New Phone Input */}
+
+          <input
+            type="email"
+            placeholder="Your Email"
+            className="input input-bordered w-full rounded-full"
+          />
+
           <textarea
             placeholder="Your Message"
             className="textarea textarea-bordered w-full rounded-2xl"
             rows={4}
           ></textarea>
+
           <button
             type="submit"
             className="px-8 py-3 bg-pink-500 text-white font-semibold rounded-full shadow-lg hover:bg-pink-600 transition"

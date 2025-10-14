@@ -2,13 +2,13 @@ import React from "react";
 import SectionHeading from "../components/sectionHeading";
 
 const facultyMembers = [
-  { name: "Dr. Jane Doe", role: "Principal", image: "/images/profile_1.png" },
-  { name: "Mr. John Smith", role: "President", image: "/images/profile_2.png" },
+  { name: "Shri Amrishbhai Patel", role: "President", image: "/images/president.png" },
   {
     name: "Dr. Alice Brown",
     role: "Dean of Academics",
     image: "/images/profile_3.png",
   },
+  { name: "Dr. Mrs. Shubhashini K Rajan", role: "Principal", image: "/images/profile_2.png" },
   {
     name: "Dr. Robert Lee",
     role: "Head of Research",
@@ -38,7 +38,7 @@ const LeadershipSection = () => {
               alt={member.name}
               className="rounded-full w-32 h-32 object-cover mx-auto mb-4"
             />
-            <h3 className="text-xl font-bold">{member.name}</h3>
+            <h3 className="text-lg font-bold">{member.name}</h3>
             <p className="text-gray-600">{member.role}</p>
           </div>
         ))}

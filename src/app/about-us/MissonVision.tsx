@@ -38,10 +38,26 @@ const VisionMission = () => {
           Our <span className="text-pink-600">Vision & Mission</span>
         </h2>
         <div className="w-24 h-1 bg-pink-500 rounded-full mx-auto"></div> */}
-        <SectionHeading title="Our" underlineTitle="Vision & Mission" description="Guided by purpose, driven by compassion — shaping the future of nursing through excellence and service."/>
+        <SectionHeading
+          title="Our"
+          underlineTitle="Vision & Mission"
+          description="Guided by purpose, driven by compassion — shaping the future of nursing through excellence and service."
+        />
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {/* Vision */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
+          <Heart className="w-12 h-12 text-indigo-600 mb-4" />
+          <h2 className="text-2xl font-bold mb-6">Our Vision</h2>
+          <p className="text-gray-600 leading-relaxed">
+            To be a globally recognised centre of excellence in nursing
+            education, nurturing skilled, compassionate, and ethical nursing
+            professionals who advance healthcare innovation while strengthening
+            community wellbeing.
+          </p>
+        </div>
+
         {/* Mission */}
         <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
           <Target className="w-12 h-12 text-pink-600 mb-4" />
@@ -92,18 +108,6 @@ const VisionMission = () => {
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Vision */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition">
-          <Heart className="w-12 h-12 text-indigo-600 mb-4" />
-          <h2 className="text-2xl font-bold mb-6">Our Vision</h2>
-          <p className="text-gray-600 leading-relaxed">
-            To be a globally recognised centre of excellence in nursing
-            education, nurturing skilled, compassionate, and ethical nursing
-            professionals who advance healthcare innovation while strengthening
-            community wellbeing.
-          </p>
         </div>
       </div>
     </section>

@@ -63,7 +63,7 @@ const HeroBanner = () => {
               Apply Now
             </a>
             <a
-              href="#more-about"
+              href="#coursesSection"
               className="btn-wide inline-block px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-full shadow-lg hover:bg-yellow-300 transition hover:shadow-2xl"
             >
               Explore Courses

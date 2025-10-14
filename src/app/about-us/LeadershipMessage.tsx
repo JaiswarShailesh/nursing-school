@@ -57,7 +57,7 @@ const LeadershipMessages = () => {
             {/* Text */}
             <div className="bg-white rounded-3xl shadow-lg p-8 mt-8 w-full hover:shadow-2xl transition transform hover:-translate-y-2">
               <h3 className="text-2xl font-bold mb-4 text-gray-800">
-                Mrs. Shubhashini K Rajan,{" "}
+                Dr. Mrs. Shubhashini K Rajan,{" "}
                 <span className="text-pink-600">Principal</span>
               </h3>
               <p className="text-gray-700 mb-4">

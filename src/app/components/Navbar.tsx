@@ -25,6 +25,7 @@ export default function Navbar() {
   const [programsOpen, setProgramsOpen] = useState(false);
   const [communityOpen, setCommunityOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // refs for scroll-lock
   const scrollYRef = useRef(0);
@@ -164,7 +165,13 @@ export default function Navbar() {
 
             {/* Programs dropdown (desktop) */}
             <li className="relative group">
-              <details className="group" onClick={(e) => e.stopPropagation()}>
+              <details
+                className="group"
+                onToggle={(e) =>
+                  setDropdownOpen((e.target as HTMLDetailsElement).open)
+                }
+                onClick={(e) => e.stopPropagation()}
+              >
                 <summary className="cursor-pointer flex items-center gap-1 text-gray-800 hover:text-pink-500 transition-colors relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300 list-none">
                   Academic Programs
                   {mounted && (
@@ -178,14 +185,19 @@ export default function Navbar() {
                 <ul
                   className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50"
                   onClick={(e) => {
-                    // Close dropdown when link is clicked
                     const details = e.currentTarget.closest("details");
                     if (details) details.removeAttribute("open");
+                    setDropdownOpen(false);
                   }}
                 >
                   <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
                     <Link href="/academic-programs/general-nursing-and-midwifery">
                       General Nursing & Midwifery
+                    </Link>
+                  </li>
+                  <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
+                    <Link href="/academic-programs/bsc-nursing">
+                      B.Sc Nursing
                     </Link>
                   </li>
                 </ul>
