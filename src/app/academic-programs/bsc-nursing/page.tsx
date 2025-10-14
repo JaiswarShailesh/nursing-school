@@ -162,8 +162,7 @@ export default function GNMProgram() {
             </span>
           </h1>
           <p className="mt-4 text-lg text-white/90 max-w-3xl mx-auto">
-            A legacy of excellence in nursing education, shaping compassionate
-            healthcare professionals for over two decades.
+            A comprehensive nursing program designed to build strong clinical skills and professional excellence.
           </p>
         </div>
         <div className="absolute left-8 bottom-0 w-32 h-32 bg-yellow-300/20 rounded-full blur-3xl"></div>
