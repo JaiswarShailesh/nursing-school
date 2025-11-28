@@ -10,7 +10,7 @@ import {
 
 export default function Eligibility() {
   return (
-    <section className="relative py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 overflow-hidden">
+    <section className="relative py-16 bg-gradient-to-r from-pink-50 via-purple-50 to-indigo-50 overflow-hidden" id="eligibilityCriteria">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <SectionHeading
           title="Eligibilty"

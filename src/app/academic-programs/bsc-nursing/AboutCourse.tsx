@@ -14,17 +14,22 @@ const AboutCourse = () => {
             About <span className="text-pink-600">Course</span>
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            A 4-year undergraduate program that blends scientific knowledge with
-            compassionate care, preparing students to become skilled and ethical
-            nursing professionals ready to serve in diverse healthcare settings.
+            The college offers a 4-year B.Sc. Nursing course (eight semesters)
+            with an annual intake of 100 students. This undergraduate program
+            combines scientific knowledge with compassionate care, preparing
+            students to become skilled and ethical nursing professionals capable
+            of serving in diverse healthcare settings.
           </p>
           <p className="text-gray-600 mb-6 leading-relaxed">
-            The course focuses on clinical excellence, leadership development,
-            and holistic patient care — empowering graduates to excel in both
-            national and international healthcare environments.
+            The rules regarding the method of selection for the B.Sc. Nursing
+            degree course, as well as other rules related to the admission
+            process, are provisional and subject to the guidelines, orders, and
+            instructions issued by the Government, the Indian Nursing Council,
+            the Maharashtra Nurses and Midwives Council, and the Maharashtra
+            University of Health Sciences.
           </p>
           <a
-            href="#more-about-bsc"
+            href="#eligibilityCriteria"
             className="inline-block px-6 py-3 rounded-full bg-pink-500 text-white font-medium shadow-lg hover:bg-pink-600 transition"
           >
             Learn More

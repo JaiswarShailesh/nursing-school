@@ -13,106 +13,256 @@ import {
   Mail,
 } from "lucide-react";
 
-const LINKS = [
+/* -------------------------------------------
+   TYPES
+------------------------------------------- */
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavItem[];
+}
+
+/* -------------------------------------------
+   NAV DATA (from user)
+------------------------------------------- */
+
+const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about-us" },
-  { label: "Faculty", href: "/faculty" },
+  { label: "About", href: "/about-us" },
+  {
+    label: "Faculty",
+    children: [
+      {
+        label: "Head of Departments",
+        children: [
+          {
+            label: "Medical Surgical Nursing",
+            href: "/campus/labs/laboratory",
+          },
+          { label: "Mental Health Nursing", href: "/campus/labs/anatomy" },
+          {
+            label: "Obstetrical and Gynaecological Nursing",
+            href: "/campus/labs/physiology",
+          },
+          { label: "Fundamentals of Nursing", href: "/campus/labs/nutrition" },
+          { label: "Child Health Nursing", href: "/campus/labs/computer" },
+          { label: "Community Health Nursing", href: "/campus/labs/skill" },
+        ],
+      },
+      {
+        label: "Clinical Instructors",
+        href: "/academic-programs/general-nursing-and-midwifery",
+      },
+    ],
+  },
   { label: "Admission", href: "/admission" },
+  {
+    label: "Programs",
+    children: [
+      {
+        label: "General Nursing & Midwifery",
+        href: "/academic-programs/general-nursing-and-midwifery",
+      },
+      { label: "B.Sc Nursing", href: "/academic-programs/bsc-nursing" },
+    ],
+  },
+  {
+    label: "Campus Facilities",
+    children: [
+      { label: "Library", href: "/campus-facilities/library" },
+      {
+        label: "Labs",
+        href: "/campus-facilities/labs",
+      },
+    ],
+  },
+  {
+    label: "Students",
+    children: [
+      {
+        label: "Sports/NCC/NSS",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Hostel",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Student Grievance Redressal",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Health Facilities",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Complaint Committee",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Anti-Ragging cell",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Placement Cell",
+        href: "/students/sports-ncc-nss",
+      },
+    ],
+  },
+  {
+    label: "Community",
+    children: [
+      {
+        label: "Photo Gallery",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "News & Events",
+        href: "/students/sports-ncc-nss",
+      },
+      {
+        label: "Announcments",
+        href: "/students/sports-ncc-nss",
+      },
+    ],
+  },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [programsOpen, setProgramsOpen] = useState(false);
-  const [communityOpen, setCommunityOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // refs for scroll-lock
+  // openPath holds indices: { main: number|null, second: number|null, third: number|null }
+  const [openPath, setOpenPath] = useState<{
+    main: number | null;
+    second: number | null;
+    third: number | null;
+  }>({ main: null, second: null, third: null });
+
+  // refs
+  const navRef = useRef<HTMLElement | null>(null);
   const scrollYRef = useRef(0);
   const lockedRef = useRef(false);
 
-  // detect scroll to style header
+  // mount detection
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  /* -------------------------------------------
+     Scroll detection
+  ------------------------------------------- */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  // robust lock / unlock functions
+  /* -------------------------------------------
+     Body scroll lock
+  ------------------------------------------- */
   const lockBodyScroll = () => {
-    if (typeof window === "undefined") return;
     if (lockedRef.current) return;
 
-    // store current scroll
-    scrollYRef.current = window.scrollY || window.pageYOffset || 0;
-
-    // apply fixed positioning to body so the page visually freezes
-    // and we can still show the drawer at full-screen height.
+    scrollYRef.current = window.scrollY || 0;
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollYRef.current}px`;
     document.body.style.left = "0";
     document.body.style.right = "0";
     document.body.style.width = "100%";
-
     lockedRef.current = true;
   };
 
   const unlockBodyScroll = () => {
-    if (typeof window === "undefined") return;
     if (!lockedRef.current) return;
 
-    // read stored scrollY and restore
     const y = scrollYRef.current;
-
-    // remove the styles we added
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.left = "";
     document.body.style.right = "";
     document.body.style.width = "";
-
-    // restore scroll position (use setTimeout 0 to ensure style removed before scroll)
-    window.setTimeout(() => {
-      window.scrollTo(0, y);
-    }, 0);
+    setTimeout(() => window.scrollTo(0, y), 0);
 
     lockedRef.current = false;
   };
 
-  // toggle lock when `open` changes. Also ensure cleanup on unmount.
   useEffect(() => {
-    if (open) lockBodyScroll();
-    else unlockBodyScroll();
+    if (open) {
+      lockBodyScroll();
+    } else {
+      unlockBodyScroll();
+    }
 
     return () => {
-      // if component unmounts while locked, ensure we unlock
-      if (lockedRef.current) unlockBodyScroll();
+      if (lockedRef.current) {
+        unlockBodyScroll();
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-  // close on Escape
+  /* -------------------------------------------
+     Close on ESC
+  ------------------------------------------- */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) setOpen(false);
+      if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, []);
+
+  /* -------------------------------------------
+     Outside click to close all menus
+  ------------------------------------------- */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenPath({ main: null, second: null, third: null });
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  /* -------------------------------------------
+     Dropdown control helpers
+  ------------------------------------------- */
+  const toggleMain = (mainIndex: number) => {
+    setOpenPath((prev) => {
+      if (prev.main === mainIndex)
+        return { main: null, second: null, third: null };
+      return { main: mainIndex, second: null, third: null };
+    });
+  };
+
+  const toggleSecond = (secondIndex: number) => {
+    setOpenPath((prev) => {
+      if (prev.main === null) return prev;
+      if (prev.second === secondIndex)
+        return { ...prev, second: null, third: null };
+      return { ...prev, second: secondIndex, third: null };
+    });
+  };
+
+  const toggleThird = (thirdIndex: number) => {
+    setOpenPath((prev) => {
+      if (prev.main === null || prev.second === null) return prev;
+      return { ...prev, third: prev.third === thirdIndex ? null : thirdIndex };
+    });
+  };
 
   return (
     <header
+      ref={navRef}
       className={`fixed top-0 left-0 w-full z-40 transition-all ${
         scrolled ? "backdrop-blur-md bg-white/90 shadow-md" : "bg-white/80"
       }`}
     >
-      {/* Topbar (hidden on small screens) */}
+      {/* TOPBAR */}
       <div className="hidden md:flex justify-between items-center px-4 md:px-8 py-2 bg-pink-600 text-white text-sm">
         <div className="flex items-center gap-4">
-          {/* <span className="font-medium"><PhoneCall /> +91 12345 67890</span> */}
           <div className="font-medium flex items-center">
             <PhoneCall className="w-4 mr-2" />
             <span>+91 12345 67890</span>
@@ -124,181 +274,181 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a aria-label="facebook" className="hover:scale-110 transition">
-            <Facebook className="w-4 h-4" />
-          </a>
-          <a aria-label="instagram" className="hover:scale-110 transition">
-            <Instagram className="w-4 h-4" />
-          </a>
-          <a aria-label="linkedin" className="hover:scale-110 transition">
-            <Linkedin className="w-4 h-4" />
-          </a>
+          <Link href="/career" className="text-xs hover:underline">
+            Career
+          </Link>
+          <Link href="/contact-us" className="text-xs hover:underline">
+            Contact Us
+          </Link>
+          <Facebook className="w-4 h-4 cursor-pointer" />
+          <Instagram className="w-4 h-4 cursor-pointer" />
+          <Linkedin className="w-4 h-4 cursor-pointer" />
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* MAIN NAVBAR */}
       <nav className="flex items-center justify-between px-4 md:px-8 py-3">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-3">
-            <img
-              src="/images/nursing_logo.png"
-              alt="Nursing College logo"
-              className="sm:h-11 md:h-9 lg:h-6 xl:h-11"
-            />
-            <span className="sr-only">Nursing & Medical College</span>
-          </Link>
-        </div>
+        <Link href="/" className="flex items-center gap-3">
+          <img
+            src="/images/nursing_logo.png"
+            alt="Nursing College logo"
+            className="sm:h-11 md:h-9 lg:h-6 xl:h-11"
+          />
+        </Link>
 
-        {/* Desktop links */}
+        {/* DESKTOP MENU */}
         <div className="hidden lg:flex items-center gap-8">
           <ul className="flex items-center gap-6 text-gray-800 text-sm">
-            {LINKS.map((l) => (
-              <li key={l.href}>
-                <Link
-                  href={l.href}
+            {NAV_ITEMS.map((item, i) =>
+              item.href ? (
+                <li key={i}>
+                  <Link
+                    href={item.href}
+                    className="relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300"
+                    onClick={() =>
+                      setOpenPath({ main: null, second: null, third: null })
+                    }
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ) : (
+                <li
+                  key={i}
                   className="relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300"
                 >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-
-            {/* Programs dropdown (desktop) */}
-            <li className="relative group">
-              <details
-                className="group"
-                onToggle={(e) =>
-                  setDropdownOpen((e.target as HTMLDetailsElement).open)
-                }
-                onClick={(e) => e.stopPropagation()}
-              >
-                <summary className="cursor-pointer flex items-center gap-1 text-gray-800 hover:text-pink-500 transition-colors relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300 list-none">
-                  Academic Programs
-                  {mounted && (
+                  {/* Main button */}
+                  <button
+                    className="cursor-pointer flex items-center gap-1"
+                    onClick={() => toggleMain(i)}
+                    aria-expanded={openPath.main === i}
+                    aria-controls={`main-dropdown-${i}`}
+                  >
+                    {item.label}
                     <ChevronDown
                       size={16}
-                      className="transition-transform duration-300 group-open:rotate-180"
+                      className={`transition-transform duration-200 ${
+                        openPath.main === i ? "rotate-180" : ""
+                      }`}
                     />
+                  </button>
+
+                  {/* FIRST LEVEL DROPDOWN */}
+                  {openPath.main === i && (
+                    <ul
+                      id={`main-dropdown-${i}`}
+                      className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 z-50"
+                    >
+                      {item.children?.map((sub, j) =>
+                        sub.href ? (
+                          <li
+                            key={j}
+                            className="py-2 px-2 hover:bg-pink-50 hover:text-pink-600 transition"
+                          >
+                            <Link
+                              href={sub.href}
+                              onClick={() =>
+                                setOpenPath({
+                                  main: null,
+                                  second: null,
+                                  third: null,
+                                })
+                              }
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ) : (
+                          <li
+                            key={j}
+                            className="py-2 px-2 hover:bg-pink-50 hover:text-pink-600 transition relative"
+                          >
+                            {/* second-level button */}
+                            <button
+                              className="w-full flex items-center justify-between gap-2"
+                              onClick={() => toggleSecond(j)}
+                              aria-expanded={
+                                openPath.second === j && openPath.main === i
+                              }
+                              aria-controls={`second-dropdown-${i}-${j}`}
+                            >
+                              <span className="text-left">{sub.label}</span>
+                              <ChevronDown
+                                size={16}
+                                className={`transition-transform duration-200 ${
+                                  openPath.second === j && openPath.main === i
+                                    ? "rotate-180"
+                                    : ""
+                                }`}
+                              />
+                            </button>
+
+                            {/* SECOND LEVEL DROPDOWN (flyout) */}
+                            {openPath.second === j && openPath.main === i && (
+                              <ul
+                                id={`second-dropdown-${i}-${j}`}
+                                className="absolute left-44 top-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg z-50"
+                              >
+                                {sub.children?.map((third, k) => (
+                                  <li
+                                    key={k}
+                                    className="py-2 px-2 hover:bg-pink-50 hover:text-pink-600 transition text-gray-700"
+                                  >
+                                    <Link
+                                      href={third.href!}
+                                      onClick={() =>
+                                        setOpenPath({
+                                          main: null,
+                                          second: null,
+                                          third: null,
+                                        })
+                                      }
+                                    >
+                                      {third.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        )
+                      )}
+                    </ul>
                   )}
-                </summary>
-
-                <ul
-                  className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50"
-                  onClick={(e) => {
-                    const details = e.currentTarget.closest("details");
-                    if (details) details.removeAttribute("open");
-                    setDropdownOpen(false);
-                  }}
-                >
-                  <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
-                    <Link href="/academic-programs/general-nursing-and-midwifery">
-                      General Nursing & Midwifery
-                    </Link>
-                  </li>
-                  <li className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition">
-                    <Link href="/academic-programs/bsc-nursing">
-                      B.Sc Nursing
-                    </Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
-
-            {/* Community */}
-            <li className="relative group">
-              <details className="group">
-                <summary className="cursor-pointer flex items-center gap-1 text-gray-800 hover:text-pink-500 transition-colors relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300 list-none">
-                  Community
-                  {mounted && (
-                    <ChevronDown
-                      size={16}
-                      className="transition-transform duration-300 group-open:rotate-180"
-                    />
-                  )}
-                </summary>
-
-                <ul className="absolute left-0 mt-3 w-48 p-3 bg-white rounded-xl shadow-lg text-gray-700 opacity-0 invisible group-open:opacity-100 group-open:visible translate-y-2 group-open:translate-y-0 transition-all duration-300 ease-out z-50">
-                  <li
-                    className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition"
-                    onClick={(e) => {
-                      // Close dropdown when link is clicked
-                      const details = e.currentTarget.closest("details");
-                      if (details) details.removeAttribute("open");
-                    }}
-                  >
-                    <Link href="/photo-gallery">Photo Gallery</Link>
-                  </li>
-                  <li
-                    className="py-2 px-2 rounded-md hover:bg-pink-50 hover:text-pink-600 transition"
-                    onClick={(e) => {
-                      // Close dropdown when link is clicked
-                      const details = e.currentTarget.closest("details");
-                      if (details) details.removeAttribute("open");
-                    }}
-                  >
-                    <Link href="/news-events">News & Events</Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
-
-            <li>
-              <Link
-                href="/"
-                className="relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300"
-              >
-                Careers
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact-us"
-                className="relative after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-500 hover:after:w-full after:transition-all after:duration-300"
-              >
-                Contact
-              </Link>
-            </li>
+                </li>
+              )
+            )}
           </ul>
         </div>
 
-        {/* Right side: CTA + mobile menu button */}
+        {/* RIGHT CTAS */}
         <div className="flex items-center gap-3">
           <a
             href="/admission"
-            className="hidden md:inline-block px-4 py-2 rounded-full bg-pink-500 text-white font-medium shadow hover:bg-pink-600 transition text-sm"
+            className="hidden md:inline-block px-4 py-2 rounded-full bg-pink-500 text-white text-sm"
           >
             Apply Now
           </a>
 
-          {/* Mobile hamburger */}
+          {/* MOBILE MENU BUTTON */}
           <button
             className="p-2 rounded-md lg:hidden"
             onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
           >
             <Menu className="w-6 h-6" />
           </button>
         </div>
       </nav>
 
-      {/* Mobile slide-over menu (overlay + full-height drawer) */}
+      {/* MOBILE MENU DRAWER */}
       {open && (
-        <div className="fixed inset-0 z-50 lg:hidden" aria-hidden={!open}>
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/40"
             onClick={() => setOpen(false)}
-            aria-hidden
           />
 
-          {/* Drawer: fixed so it always covers viewport regardless of scroll */}
-          <aside
-            className="fixed right-0 top-0 h-screen w-11/12 max-w-sm bg-white shadow-xl flex flex-col transform transition-transform duration-300"
-            role="dialog"
-            aria-modal="true"
-          >
-            {/* Header */}
+          <aside className="fixed right-0 top-0 h-screen w-11/12 max-w-sm bg-white shadow-xl flex flex-col">
             <div className="flex items-center justify-between p-6 border-b">
               <Link
                 href="/"
@@ -314,87 +464,87 @@ export default function Navbar() {
 
               <button
                 onClick={() => setOpen(false)}
-                aria-label="Close menu"
                 className="p-1 rounded hover:bg-gray-100"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Scrollable nav area */}
             <div className="flex-1 overflow-y-auto px-6 py-4">
               <nav className="flex flex-col gap-3 text-gray-800">
-                {LINKS.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="py-2 border-b"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
+                {NAV_ITEMS.map((item, i) =>
+                  item.href ? (
+                    <Link
+                      key={i}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="py-2 border-b"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <div key={i}>
+                      <button
+                        onClick={() => toggleMain(i)}
+                        className="w-full flex items-center justify-between py-2 border-b"
+                        aria-expanded={openPath.main === i}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            openPath.main === i ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
 
-                {/* Programs (mobile) */}
-                <div>
-                  <button
-                    onClick={() => setProgramsOpen((s) => !s)}
-                    className="w-full flex items-center justify-between py-2 border-b"
-                    aria-expanded={programsOpen}
-                  >
-                    <span>Academic Programs</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
-                        programsOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {programsOpen && (
-                    <div className="pl-4 pt-2">
-                      <Link
-                        href="/academic-programs/general-nursing-and-midwifery"
-                        onClick={() => setOpen(false)}
-                        className="block py-2"
-                      >
-                        - General Nursing & Midwifery
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                      {openPath.main === i &&
+                        item.children?.map((c, j) =>
+                          c.href ? (
+                            <Link
+                              key={j}
+                              href={c.href ?? "#"}
+                              onClick={() => setOpen(false)}
+                              className="block py-2 pl-4"
+                            >
+                              - {c.label}
+                            </Link>
+                          ) : (
+                            <div key={j}>
+                              <button
+                                onClick={() => toggleSecond(j)}
+                                className="w-full flex items-center justify-between py-2 pl-4"
+                                aria-expanded={
+                                  openPath.second === j && openPath.main === i
+                                }
+                              >
+                                <span>{c.label}</span>
+                                <ChevronDown
+                                  className={`w-4 h-4 transition-transform ${
+                                    openPath.second === j && openPath.main === i
+                                      ? "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              </button>
 
-                {/* Community (mobile) */}
-                <div>
-                  <button
-                    onClick={() => setCommunityOpen((s) => !s)}
-                    className="w-full flex items-center justify-between py-2 border-b"
-                    aria-expanded={communityOpen}
-                  >
-                    <span>Community</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${
-                        communityOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {communityOpen && (
-                    <div className="pl-4 pt-2">
-                      <Link
-                        href="/photo-gallery"
-                        onClick={() => setOpen(false)}
-                        className="block py-2"
-                      >
-                        - Photo Gallery
-                      </Link>
-                      <Link
-                        href="/news-events"
-                        onClick={() => setOpen(false)}
-                        className="block py-2"
-                      >
-                        - News & Events
-                      </Link>
+                              {openPath.second === j &&
+                                openPath.main === i &&
+                                c.children?.map((third, k) => (
+                                  <Link
+                                    key={k}
+                                    href={third.href!}
+                                    onClick={() => setOpen(false)}
+                                    className="block py-2 pl-8"
+                                  >
+                                    - {third.label}
+                                  </Link>
+                                ))}
+                            </div>
+                          )
+                        )}
                     </div>
-                  )}
-                </div>
+                  )
+                )}
 
                 <Link
                   href="/careers"
@@ -413,12 +563,11 @@ export default function Navbar() {
               </nav>
             </div>
 
-            {/* Bottom CTAs (stick to bottom) */}
             <div className="p-6 border-t">
               <a
                 href="/admission"
                 onClick={() => setOpen(false)}
-                className="block w-full text-center px-4 py-2 rounded-full bg-pink-500 text-white font-medium shadow"
+                className="block w-full text-center px-4 py-2 rounded-full bg-pink-500 text-white font-medium"
               >
                 Apply Now
               </a>

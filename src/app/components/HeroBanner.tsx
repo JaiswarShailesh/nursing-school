@@ -41,11 +41,11 @@ const HeroBanner = () => {
     <div
       className="hero min-h-screen relative"
       style={{
-        backgroundImage: "url('/images/Nursing_School_Banner.png')",
+        backgroundImage: "url('/images/nursing-college.jpg')",
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-40"></div>
+      <div className="absolute inset-0 bg-black opacity-20"></div>
 
       <div className="hero-content text-center text-neutral-content relative z-10">
         <div className="max-w-3xl">

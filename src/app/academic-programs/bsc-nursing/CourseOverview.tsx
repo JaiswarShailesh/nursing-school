@@ -14,43 +14,94 @@ const CourseOverview = () => {
         <div className="grid md:grid-cols-3 justify-center gap-10 text-left">
           {[
             {
-              year: "Year 1",
+              year: "Semester I",
               subjects: [
-                "Anatomy & Physiology",
-                "Nutrition & Biochemistry",
-                "Nursing Foundations",
-                "Psychology",
-                "Microbiology",
-                "English & Computer Education",
+                "Communicative English",
+                "Applied Anatomy",
+                "Applied Physiology",
+                "Applied Sociology",
+                "Applied Psychology",
+                "Nursing Foundations I",
               ],
+              mandatoryModule:
+                "First Aid as part of Nursing Foundation I Course",
             },
             {
-              year: "Year 2",
+              year: "Semester II",
               subjects: [
-                "Sociology",
-                "Pharmacology, Pathology & Genetics",
-                "Medical-Surgical Nursing – I",
-                "Community Health Nursing – I",
-                "Communication & Educational Technology",
+                "Applied Biochemistry",
+                "Applied Nutrition and Dietetics",
+                "Nursing Foundations II",
+                "Health/Nursing Informatics & Technology",
               ],
+              mandatoryModule:
+                "Health Assessment as part of Nursing Foundation II Course",
             },
             {
-              year: "Year 3",
+              year: "Semester III",
               subjects: [
-                "Medical-Surgical Nursing – II",
+                "Applied Microbiology and Infection Control including Safety",
+                "Pharmacology I",
+                "Pathology I",
+                "Adult Health (Medical Surgical) Nursing I with integrated pathophysiology",
+              ],
+              mandatoryModule: "BCLS as part of Adult Health Nursing I",
+            },
+            {
+              year: "Semester IV",
+              subjects: [
+                "Pharmacology II",
+                "Pathology II & Genetics",
+                "Adult Health Nursing II with integrated pathophysiology including Geriatric Nursing",
+                "Professionalism, Professional Values & Ethics including Bioethics",
+              ],
+              mandatoryModule:
+                "Fundamentals of Prescribing under Pharmacology II, Palliative care module under Adult Health Nursing II",
+            },
+            {
+              year: "Semester V",
+              subjects: [
+                "Child Health Nursing I",
+                "Mental Health Nursing I",
+                "Community Health Nursing I (including Environmental Science & Epidemiology)",
+                "Educational Technology/Nursing Education",
+                "Introduction to Forensic Nursing and Indian Laws",
+              ],
+              mandatoryModule:
+                "Essential New-born Care (ENBC), Facility Based New-born Care (FBNBC), IMNCI and PLS as part of Child Health Nursing",
+            },
+            {
+              year: "Semester VI",
+              subjects: [
+                "Child Health Nursing II",
+                "Mental Health Nursing II",
+                "Nursing Management & Leadership",
+                "Midwifery/Obstetrics and Gynaecology (OBG) Nursing I",
+              ],
+              mandatoryModule:
+                "SBA Module under OBG Nursing I/II (VI/VII Semester)",
+            },
+            {
+              year: "Semester VII",
+              subjects: [
+                "Community Health Nursing II",
+                "Nursing Research & Statistics",
+                "Midwifery/Obstetrics and Gynaecology (OBG) Nursing II",
+              ],
+              mandatoryModule:
+                "Safe delivery app under OBG Nursing I/II (VI/VII Semester)",
+            },
+            {
+              year: "Semester VIII",
+              subjects: [
+                "Community Health Nursing",
+                "Adult Health Nursing",
                 "Child Health Nursing",
                 "Mental Health Nursing",
-                "Nursing Research & Statistics",
+                "Midwifery/Obstetrics and Gynaecology (OBG) Nursing",
               ],
-            },
-            {
-              year: "Year 4",
-              subjects: [
-                "Midwifery & Obstetric Nursing",
-                "Community Health Nursing – II",
-                "Nursing Management",
-                "Research Project & Internship",
-              ],
+              mandatoryModule:
+                "Internship Intensive Practicum/Residency programme",
             },
           ].map((block, i) => (
             <div
@@ -74,6 +125,14 @@ const CourseOverview = () => {
                   </li>
                 ))}
               </ul>
+
+              <p className="p-6 pt-0">
+                <span className="font-bold text-pink-600">
+                  Mandatory Module
+                </span>
+                <span className="text-red-600 pe-3">*</span>
+                {block.mandatoryModule}
+              </p>
             </div>
           ))}
         </div>
