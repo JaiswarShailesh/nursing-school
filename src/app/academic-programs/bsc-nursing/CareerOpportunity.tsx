@@ -1,5 +1,5 @@
 import SectionHeading from "@/app/components/sectionHeading";
-import { Briefcase, BriefcaseMedical, Heart, HeartPulse, Hospital, Stethoscope, Users } from "lucide-react";
+import {  BriefcaseMedical, HeartPulse, Stethoscope, Users } from "lucide-react";
 import React from "react";
 
 const CareerOpportunity = () => {
